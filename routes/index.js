@@ -7,8 +7,10 @@ router.use(function(req, res, next) {
   console.log("req unencoded path", req.headers['x-waws-unencoded-url']);
 
   if(req.headers['x-waws-unencoded-url'] != undefined) {
+    req.originalUrl = req.headers['x-waws-unencoded-url'];
     req.url = req.headers['x-waws-unencoded-url'];
     console.log("req path updated");
+    console.log("req new path", req.url);
   }
 
   next();
